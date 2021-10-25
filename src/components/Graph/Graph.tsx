@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react'
+import React, { ReactNode, useState, useEffect } from 'react'
 import Loader from '../Loader/Loader'
 import { Line } from "react-chartjs-2";
 
@@ -17,6 +17,7 @@ export default function Graph({
 }: GraphProps) {
     const [loadingGraph, setLoadingGraph] = useState<boolean>(false)
     const [chartData, setChartData] = useState<any>()
+    const [options, setOptions] = useState<any>()
 
     useEffect(() => {
         setLoadingGraph(true)
@@ -34,6 +35,51 @@ export default function Graph({
               },
             ]
           });
+        setOptions({
+            responsive: true,
+            title: { text: "unknown", display: false },
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    autoSkip: true,
+                    maxTicksLimit: 10,
+                    beginAtZero: true
+                  },
+                  gridLines: {
+                    display: true,
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: "Count",
+                    fontColor: '#FFFFFF'
+                  }
+                }
+              ],
+              xAxes: [
+                {
+                  gridLines: {
+                    display: true,
+                  },
+                  ticks: {
+                    display: false,
+
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: `Time (YY-MM-DD)`,
+                    fontColor: 'black',
+                  },
+                }
+              ]
+            },
+            legend: {
+              labels: {
+                fontColor: 'black'
+              }
+            }
+          }
+        )
         setLoadingGraph(false)
     }, [])
 
@@ -44,50 +90,7 @@ export default function Graph({
             ) : (
             <Line
               data={chartData}
-              options={{
-                responsive: true,
-                title: { text: "unknown", display: false },
-                scales: {
-                  yAxes: [
-                    {
-                      ticks: {
-                        autoSkip: true,
-                        maxTicksLimit: 10,
-                        beginAtZero: true
-                      },
-                      gridLines: {
-                        display: true,
-                      },
-                      scaleLabel: {
-                        display: true,
-                        labelString: "Count",
-                        fontColor: '#FFFFFF'
-                      }
-                    }
-                  ],
-                  xAxes: [
-                    {
-                      gridLines: {
-                        display: true,
-                      },
-                      ticks: {
-                        display: false,
-
-                      },
-                      scaleLabel: {
-                        display: true,
-                        labelString: `Time (YY-MM-DD)`,
-                        fontColor: 'black',
-                      },
-                    }
-                  ]
-                },
-                legend: {
-                  labels: {
-                    fontColor: 'black'
-                  }
-                }
-              }}
+              options={options}
               />
             )}
         </>

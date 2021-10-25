@@ -38,6 +38,7 @@ export default function Simulate({
                     label={"Name your datatoken: "} 
                     includesButton={true}
                     onEnter={setUserDataTokenName}
+                    placeholder={`Enter your datatoken name`}
                 />
             </div>
             
@@ -47,18 +48,21 @@ export default function Simulate({
                     label={"Initial Balance (OCEAN): "} 
                     includesButton={true}
                     onEnter={setInitialBalanceOCEAN}
+                    placeholder={`Enter a number`}
                 />
                 <InputElement 
                     name={"DataTokenBalance"} 
                     label={`Initial Balance (${userDataTokenName}): `} 
                     includesButton={true}
                     onEnter={setInitialBalanceDT}
+                    placeholder={`Enter a number`}
                 />
                 <InputElement 
                     name={"SwapFee"} 
                     label={"Swap Fee: "} 
                     includesButton={true}
                     onEnter={setSwapFee}
+                    placeholder={`Enter a number between 0 and 100`}
                 />
             </div>
 
