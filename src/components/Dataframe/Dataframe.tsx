@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react'
+import React, { ReactNode, useState, useEffect } from 'react'
 import Loader from '../Loader/Loader'
 import styles from './Dataframe.module.css'
 
@@ -20,8 +20,9 @@ export default function DataFrame({
     const [rows, setRows] = useState<any[]>()
     const [loadingDF, setLoadingDF] = useState<boolean>()
 
-    const size = 10
     const makeTable = () => {
+        setLoadingDF(true)
+        const size = 10
         let rows = [];
         for (var i = 0; i < size; i++) {
             let rowID = `row${i}`
@@ -33,7 +34,13 @@ export default function DataFrame({
             rows.push(<tr key={i} id={rowID}>{cell}</tr>)
         }
         setRows(rows)
+        setLoadingDF(false)
     }
+
+    useEffect(() => {
+        makeTable()
+    }, [])
+
     return loadingDF ? (
         <table>
             <tbody>
