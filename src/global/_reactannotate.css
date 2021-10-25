@@ -1,0 +1,24 @@
+/*********************/
+/** FLASHING BUTTON **/
+/*********************/
+@keyframes glowing {
+    0% {
+      background-color: purple;
+      box-shadow: 0 0 5px purple;
+    }
+    50% {
+      background-color: purple;
+      box-shadow: 0 0 20px purple;
+    }
+    100% {
+      background-color: purple;
+      box-shadow: 0 0 5px purple;
+    }
+}
+
+.flashingButton {
+    color: white;
+    background: purple;
+    border-radius: 30px;
+    animation: glowing 1300ms infinite;
+}

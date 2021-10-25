@@ -1,26 +1,15 @@
-import * as React from 'react'
-import ReactGA from 'react-ga'
-import { Provider } from 'react-redux'
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.module.css';
+import App from './App';
+import Styles from './global/Styles';
+import { UserInputProvider } from './providers/UserInput';
 
-import { App } from './app/App.controller'
-import { configureStore } from './app/App.store'
-import { unregister } from './serviceWorker'
-
-export const store = configureStore({})
-
-ReactGA.initialize('UA-180076760-1')
-
-export const Root = () => {
-  return (
-      <>
-      <Provider store={store}>
-        <Router>
-          <App />
-        </Router>
-      </Provider>
-      </>
-  )
-}
-
-unregister()
+ReactDOM.render(
+  <React.StrictMode>
+      <Styles>
+        <App />
+      </Styles>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
