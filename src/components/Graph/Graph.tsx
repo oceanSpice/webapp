@@ -1,12 +1,13 @@
 import React, { ReactNode, useState, useEffect } from 'react'
 import Loader from '../Loader/Loader'
+import styles from './Graph.module.css'
 import { Line } from "react-chartjs-2";
 
 type GraphProps = {
-    title: string
-    userDataTokenName: string | undefined
-    OCEANCol: number[] | undefined
-    DTCol: number[] | undefined
+  title: string
+  userDataTokenName: string | undefined
+  OCEANCol: number[] | undefined
+  DTCol: number[] | undefined
 }
 
 export default function Graph({
@@ -51,7 +52,7 @@ export default function Graph({
                   },
                   scaleLabel: {
                     display: true,
-                    labelString: "Count",
+                    labelString: `${userDataTokenName}`,
                     fontColor: '#FFFFFF'
                   }
                 }
@@ -60,6 +61,7 @@ export default function Graph({
                 {
                   gridLines: {
                     display: true,
+                    beginAtZero: true
                   },
                   ticks: {
                     display: false,
@@ -67,7 +69,7 @@ export default function Graph({
                   },
                   scaleLabel: {
                     display: true,
-                    labelString: `Time (YY-MM-DD)`,
+                    labelString: `OCEAN Tokens`,
                     fontColor: 'black',
                   },
                 }
@@ -88,10 +90,13 @@ export default function Graph({
             {loadingGraph ? (
                 <Loader message={"Loading your graph..."}/>
             ) : (
-            <Line
-              data={chartData}
-              options={options}
+              <>
+              <h1 className={styles.center}>{title}</h1>
+              <Line
+                data={chartData}
+                options={options}
               />
+              </>
             )}
         </>
     )

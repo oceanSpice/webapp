@@ -16,9 +16,9 @@ interface UserInputProviderValue {
     initialBalanceDT: number | undefined,
     swapFee: number | undefined,
     setUserDataTokenName: (newValue: string) => void,
-    setInitialBalanceOCEAN: (newValue: number) => void,
-    setInitialBalanceDT: (newValue: number) => void,
-    setSwapFee: (newValue: number) => void,
+    setInitialBalanceOCEAN: (newValue: string) => void,
+    setInitialBalanceDT: (newValue: string) => void,
+    setSwapFee: (newValue: string) => void,
     oceanCol: number[] | undefined,
     DTCol: number[] | undefined,
     invariant: number | undefined,
@@ -51,16 +51,19 @@ function UserInputProvider({ children }: { children: ReactNode }): ReactElement 
         setUserDataTokenName(newValue)
     }
 
-    const SetInitialBalanceOCEAN = (newValue: number) => {
-        setInitialBalanceOCEAN(newValue) 
+    const SetInitialBalanceOCEAN = (newValue: string) => {
+        var numberVal = parseInt(newValue)
+        setInitialBalanceOCEAN(numberVal) 
     }
 
-    const SetInitialBalanceDT = (newValue: number) => {
-        setInitialBalanceDT(newValue)
+    const SetInitialBalanceDT = (newValue: string) => {
+        var numberVal = parseInt(newValue)
+        setInitialBalanceDT(numberVal)
     }
 
-    const SetSwapFee = (newValue: number) => {
-        setSwapFee(newValue)
+    const SetSwapFee = (newValue: string) => {
+        var numberVal = parseInt(newValue)
+        setSwapFee(numberVal)
     }
 
     const SetClear = () => {

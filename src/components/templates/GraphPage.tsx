@@ -36,7 +36,7 @@ export default function GraphPage({
                 <Loader message={"Loading your simulation data. We'll be with you in a moment!"} /> 
             ) : (
                 <div className={styles.background}>
-                    <div className={styles.typeSelectorCollapser}>
+                    {/* <div className={styles.typeSelectorCollapser}>
                         <Button 
                             title={'GRAPH'} 
                             onClick={(e) => changeType('graph')} 
@@ -45,7 +45,7 @@ export default function GraphPage({
                             title={'DATAFRAME'} 
                             onClick={(e) => changeType('dataframe')} 
                         />
-                    </div>
+                    </div> */}
                     <div className={styles.simulation}>
                         {showingType == 'graph' ? (
                             <Graph 
@@ -72,10 +72,10 @@ export default function GraphPage({
                     onClick={(e) => goBack()}
                 />
 
-                <Button 
+                {/* <Button 
                     title={"Save"}
                     onClick={(e) => save()}
-                />
+                /> */}
             </div>
         </>
     )

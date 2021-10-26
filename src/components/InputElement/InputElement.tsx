@@ -17,24 +17,28 @@ export default function InputElement({
     includesButton,
     placeholder
 }: InputProps) {
-    const [val, setVal] = useState<string>()
     
     const handleChange = (evt: React.KeyboardEvent<HTMLInputElement>) => {
+        console.log(`handling change...`)
+        console.log((evt.target as HTMLInputElement).value)
+        var value = (evt.target as HTMLInputElement).value
         if (evt.key === 'Enter') {
             (evt.target as HTMLInputElement).value = ""
+            console.log(`enter pressed!`)
+            console.log((evt.target as HTMLInputElement).value)
+            console.log(value)
             if (onEnter !== undefined) {
                 console.log((evt.target as HTMLInputElement).value)
-                onEnter((evt.target as HTMLInputElement).value)
+                onEnter(value)
             }
         }
-        setVal((evt.target as HTMLInputElement).value)
     }
 
-    const onClick = () => {
-        if (val !== undefined && val !== '') {
-            onEnter(val)
-        }
-    }
+    // const onClick = () => {
+    //     if (val !== undefined && val !== '') {
+    //         onEnter(val)
+    //     }
+    // }
 
     return (
         <div className={styles.inputElement}>
@@ -47,9 +51,10 @@ export default function InputElement({
                     onKeyUp={(e) => handleChange(e)}
                     placeholder={placeholder}
                 />
-                {includesButton && (
+                {/** TODO: Make this work thru references **/}
+                {/* {includesButton && (
                     <TickButton onClick={(e) => onClick()} />
-                )}
+                )} */}
             </div>
         </div>
     )
