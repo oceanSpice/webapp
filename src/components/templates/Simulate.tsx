@@ -48,14 +48,14 @@ export default function Simulate({
                     label={"Initial Balance (OCEAN): "} 
                     includesButton={true}
                     onEnter={setInitialBalanceOCEAN}
-                    placeholder={`Enter number`}
+                    placeholder={`Enter no.`}
                 />
                 <InputElement 
                     name={"DataTokenBalance"} 
                     label={`Initial Balance (${userDataTokenName}): `} 
                     includesButton={true}
                     onEnter={setInitialBalanceDT}
-                    placeholder={`Enter number`}
+                    placeholder={`Enter no.`}
                 />
                 <InputElement 
                     name={"SwapFee"} 
